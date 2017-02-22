@@ -6,9 +6,13 @@
 		
 		<transition name="fade" appear>
 			<div v-show="show" class="apps">
-				<ul>
-					<li v-for="item in message">
-						{{item}}
+				<ul style="width:500px;">
+					<li>
+						<el-input v-model='item' />
+						<el-button @click='ADD_TOTAL(item)'>提交</el-button>
+					</li>
+					<li v-for="(item,index) in allTodos">
+						{{item.idx}}-{{item.text}}-{{item.dateTime}}
 					</li>
 				</ul>
 				hello vue2!!
@@ -25,18 +29,37 @@
 	</div>
 </template>
 <script>
-	import Vue from 'vue';
-	import { Button } from 'element-ui';
-	Vue.component(Button.name, Button)
-	export default {
-		data(){
-			return {
-				show:true,
-				showmsg:false,
-				message:'hello world!'
-			}
+import { mapGetters, mapActions } from 'vuex';
+import { Button,Input,Alert } from 'element-ui';
+
+Vue.component(Button.name, Button);
+Vue.component(Input.name, Input);
+Vue.component(Alert.name, Alert);
+export default {
+	data(){
+		return {
+			show:true,
+			showmsg:false,
+			message:'hello world!',
+			item:''
+		}
+	},
+	computed: mapGetters(['allTodos']),
+	created () {
+		this.$store.dispatch('ALL_TOTAL',[{
+            idx:1,
+            text:'first item',
+            dateTime: new Date()
+        }]);//初始化items
+	},
+	methods: {
+		ADD_TOTAL:function(){
+		console.log(this);
+			this.$store.dispatch('ADD_TOTAL',this.item);
+			this.item = "";
 		}
 	}
+}
 </script>
 <style scoped>
 .apps {
