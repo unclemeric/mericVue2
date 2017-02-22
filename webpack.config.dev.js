@@ -76,18 +76,6 @@ var webpackConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({'Vue': "vue"}),
-    new webpack.LoaderOptionsPlugin({
-      // test: /\.xxx$/, // may apply this only for some modules
-      options: {
-        vue: {
-          loaders: {
-            css: 'vue-style-loader!css-loader',
-            postcss: 'vue-style-loader!css-loader',
-            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-          }
-        }
-      }
-    })
   ]
 }
 let htmlPageWebpack = fileNames.map((name)=>{

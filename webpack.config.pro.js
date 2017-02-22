@@ -26,7 +26,7 @@ var webpackConfig = {
   output: {
     filename: '[name].[hash:8].min.js',
     path: rootPath,
-    publicPath: '/'
+    publicPath: './'
   },
   resolve: {
     extensions: ['.js', '.vue'],
@@ -41,29 +41,29 @@ var webpackConfig = {
   module: {
     rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader'
+        use: 'vue-loader',
       }, {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         exclude: nodeModules,
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'vue-style-loader', loader: 'css-loader' }),
+        use: ExtractTextPlugin.extract({ fallback: 'vue-style-loader', use: 'css-loader' }),
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'vue-style-loader', loader: 'css-loader!sass-loader?indentedSyntax'}),
+        use: ExtractTextPlugin.extract({ fallback: 'vue-style-loader', use: 'css-loader!sass-loader?indentedSyntax'}),
       },
       // loader png or jpg or git and svg files 然后压缩之，并把小于10kb的图片base64格式内联到css文件中。
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
+        use: [
           'image-webpack-loader?{progressive:true, optimizationLevel: 4, ' +
           'interlaced: false, pngquant:{quality: "65-90", speed: 4}}', // 压缩图片
           'url-loader?limit=10000&name=img/[name].[hash:8].[ext]', // 小于10kb的图片base64格式内联到css文件中。
         ],
       }, {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader?limit=10000&name=fonts/[name].[hash:8].[ext]'
+        use: 'url-loader?limit=10000&name=fonts/[name].[hash:8].[ext]'
       }
     ]
   },
@@ -80,19 +80,6 @@ var webpackConfig = {
         compress: {
             warnings: false
         }
-    }),
-    // https://github.com/ampedandwired/html-webpack-plugin
-    new webpack.LoaderOptionsPlugin({
-      // test: /\.xxx$/, // may apply this only for some modules
-      options: {
-        vue: {
-          loaders: {
-            css: ExtractTextPlugin.extract({ fallbackLoader: 'vue-style-loader', loader: 'css-loader' }),
-            postcss: ExtractTextPlugin.extract({ fallbackLoader: 'vue-style-loader', loader: 'css-loader' }),
-            sass: ExtractTextPlugin.extract({ fallbackLoader: 'vue-style-loader', loader: 'css-loader!sass-loader?indentedSyntax' })
-          }
-        }
-      }
     })
   ]
 }
