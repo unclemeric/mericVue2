@@ -5,3 +5,9 @@
 export const ADD_TOTAL = 'ADD_TOTAL';
 export const DEL_TOTAL = 'DEL_TOTAL';
 export const ALL_TOTAL = 'ALL_TOTAL';
+
+/**
+ * article api
+ */
+
+export const GET_ARTICLES = 'GET_ARTICLES';

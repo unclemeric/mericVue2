@@ -3,7 +3,7 @@
  */
 import Vue from 'vue';
 import App from './App.vue';
-import store from '../store';
+import store from '../store/article_store';
 import router from '../routers';
 
 new Vue({
