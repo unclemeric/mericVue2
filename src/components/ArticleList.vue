@@ -4,10 +4,11 @@
             <title-bar :title="title" />
             <ul class="item-list">
                 <li class="item" v-for="(item,i) in GET_ARTICLES">
-                    <router-link class="item-title" to="home">{{item.title}}</router-link>
+                    <router-link class="item-title" :to="{ path: '/article/'+item.id}" >{{item.title}}</router-link>
                     <span class="am-list-date">{{item.publishDate}}</span>
                 </li>
             </ul>
+            <div v-if="!GET_ARTICLES.length" class="no-article">暂无文章~</div>
             <div class="pagination">
                 <el-pagination
                         @size-change="handleSizeChange"
@@ -15,7 +16,7 @@
                         :current-page="currentPage"
                         :page-size="pageSize"
                         layout="total, prev, pager, next"
-                        :total="totalSize">
+                        :total="articles.length">
                 </el-pagination>
             </div>
         </div>
@@ -40,7 +41,7 @@
     state里面的对象不能直接操作/改变
 -->
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters,mapState } from 'vuex'
 import TitleBar from './TitleBar.vue';
 import { Card, Pagination } from 'element-ui';
 
@@ -53,11 +54,14 @@ export default {
             title:"文章列表",
             currentPage:1,
             pageSize:20,
-            totalSize:1000,
         }
     },
     computed:{
-        ...mapGetters(['GET_ARTICLES'])
+        ...mapGetters(['GET_ARTICLES']),
+        //...mapState(['articles'])//如果不用mapState的想获取articles的话要写成$store.state.articles,或者写成下面这种方式
+        ...mapState({
+            articles: state => state.articles.articles
+        }) 
     },
     created(){
         this.$store.dispatch('GET_ARTICLES');//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
@@ -82,6 +86,11 @@ export default {
             display: inline-block;
             background-color: #fff;
             overflow: hidden;
+            .no-article {
+                width:100%;
+                text-align:center;
+                padding:20px 0;
+            }
             .item-list {
                 list-style:none;
                 padding:0;

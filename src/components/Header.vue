@@ -7,7 +7,7 @@
                     <div class="grid-content bg-purple-dark">
                         <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
                             <router-link to="/"><el-menu-item index="1">首页</el-menu-item></router-link>
-                            <router-link to="/article"><el-menu-item index="2">文章</el-menu-item></router-link>
+                            <router-link to="/articles"><el-menu-item index="2">文章</el-menu-item></router-link>
                             <router-link to="/notes"><el-menu-item index="3">笔记</el-menu-item></router-link>
                             <router-link to="/profile"><el-menu-item index="4">个人简介</el-menu-item></router-link>
                             <router-link to="/feedback"><el-menu-item index="5">留言</el-menu-item></router-link>
@@ -45,7 +45,7 @@
     width:100%;
     background:#20a0ff;
     .header {
-        width:1200px;
+        width:1100px;
         margin:0 auto;
         .el-col {
             height:90px;

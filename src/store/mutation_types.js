@@ -11,3 +11,4 @@ export const ALL_TOTAL = 'ALL_TOTAL';
  */
 
 export const GET_ARTICLES = 'GET_ARTICLES';
+export const GET_ARTICLE_BY_ID = 'GET_ARTICLE_BY_ID';

@@ -4,6 +4,7 @@
 import VueRouter from 'vue-router';
 import Home from './components/Home';
 import ArticleList from './components/ArticleList';
+import Article from './components/Article';
 
 Vue.use(VueRouter)
 
@@ -12,9 +13,12 @@ const routers = [{
     name:'home',
     component: Home
 }, {
-    path: '/article',
-    name: 'article',
+    path: '/articles',
+    name: 'article_list',
     component: ArticleList
+},{
+    path: '/article/:id',
+    component: Article
 }]
 
 export default new VueRouter({

@@ -11,6 +11,7 @@
 <script>
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../assets/base.css';
 export default {
     data() {
         return {
@@ -52,7 +53,7 @@ body {
     padding: 0;
     margin: 0;
     .app-main {
-        width: 1200px;
+        width: 1100px;
         margin: 0 auto;
         padding: 20px 0;
     }
@@ -68,6 +69,9 @@ body {
         .app-main {
             min-height: 600px;
         }
+    }
+    img {
+        max-width: 100%;
     }
 }
 </style>

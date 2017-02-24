@@ -50,8 +50,8 @@ var webpackConfig = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({ fallback: 'vue-style-loader', use: 'css-loader' }),
       }, {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({ fallback: 'vue-style-loader', use: 'css-loader!sass-loader?indentedSyntax'}),
+        test: /\.(scss|sass)$/,
+        use: ExtractTextPlugin.extract({ fallback: 'vue-loader', use: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'}),
       },
       // loader png or jpg or git and svg files 然后压缩之，并把小于10kb的图片base64格式内联到css文件中。
       {
