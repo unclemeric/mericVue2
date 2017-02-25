@@ -10,7 +10,6 @@
 
 </template>
 <script>
-import '../assets/mark-edit.css';
 import { mapGetters,mapState } from 'vuex';
 import moment from 'moment';
 
