@@ -1,6 +1,7 @@
 <template>
     <div>
         {{title}}
+        <h1 v-text="$t('message.heading')"></h1>
     </div>
 </template>
 

@@ -18,10 +18,12 @@ const routers = [{
     component: ArticleList
 },{
     path: '/article/:id',
+    name: 'article',
     component: Article
 }]
 
 export default new VueRouter({
     routes: routers,
-    hashbang: true
+    hashbang: true,
+    history: true
 })

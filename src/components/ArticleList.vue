@@ -4,7 +4,7 @@
             <title-bar :title="title" />
             <ul class="item-list">
                 <li class="item" v-for="(item,i) in GET_ARTICLES">
-                    <router-link class="item-title" :to="{ path: '/article/'+item.id}" >{{item.title}}</router-link>
+                    <router-link class="item-title" :to="{ name: 'article',params:{id:item.id}}" >{{item.title}}</router-link>
                     <span class="am-list-date">{{item.publishDate}}</span>
                 </li>
             </ul>
@@ -45,6 +45,7 @@ import { mapGetters,mapState } from 'vuex'
 import TitleBar from './TitleBar.vue';
 import { Card, Pagination } from 'element-ui';
 
+Vue.locale
 Vue.component(Card.name,Card);
 Vue.component(Pagination.name,Pagination);
 
