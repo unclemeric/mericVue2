@@ -45,7 +45,6 @@ import { mapGetters,mapState } from 'vuex'
 import TitleBar from './TitleBar.vue';
 import { Card, Pagination } from 'element-ui';
 
-Vue.locale
 Vue.component(Card.name,Card);
 Vue.component(Pagination.name,Pagination);
 
