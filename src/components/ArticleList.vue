@@ -16,15 +16,15 @@
                         :current-page="currentPage"
                         :page-size="pageSize"
                         layout="total, prev, pager, next"
-                        :total="articles.length">
+                        :total="articles.total">
                 </el-pagination>
             </div>
         </div>
          <div class="right">
              <el-card class="box-card new-article">
                  <h2>最新文章</h2>
-                 <div v-for="o in 10" class="text item">
-                     {{'列表内容 ' + o }}
+                 <div v-for="(item,i) in GET_NEWEST_ARTICLES" class="text item">
+                     <router-link class="item-title" :to="{ name: 'article',params:{id:item.id}}" >{{item.title}}</router-link>
                  </div>
              </el-card>
              <el-card class="box-card new-words">
@@ -54,26 +54,35 @@ export default {
         return {
             title:"文章列表",
             currentPage:1,
-            pageSize:20,
+            pageSize:2,
         }
     },
     computed:{
-        ...mapGetters(['GET_ARTICLES']),
+        ...mapGetters(['GET_ARTICLES','GET_NEWEST_ARTICLES']),
         //...mapState(['articles'])//如果不用mapState的想获取articles的话要写成$store.state.articles,或者写成下面这种方式
         ...mapState({
             articles: state => state.articles.articles
         }) 
     },
     created(){
-        this.$store.dispatch('GET_ARTICLES');//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
+        this.getListItem({currentPage:this.currentPage,pageSize:this.pageSize});//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
+        this.getNewestArticles(10);
     },
     mounted(){},
     components:{
         "title-bar":TitleBar
     },
     methods:{
+        getListItem(pager) {
+            this.$store.dispatch('GET_ARTICLES',pager);//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
+        },
+        getNewestArticles:function(size){
+            this.$store.dispatch('GET_NEWEST_ARTICLES',size);
+        },
         handleSizeChange:function () {},
-        handleCurrentChange:function () {}
+        handleCurrentChange:function (pageNo) {
+            this.getListItem({currentPage:pageNo,pageSize:this.pageSize});
+        }
 
     }
 }
@@ -131,6 +140,17 @@ export default {
                     margin: 0;
                     padding: 0;
                     font-size: 16px;
+                }
+            }
+            .box-card {
+                .item {
+                    overflow: hidden;
+                    font-size: 13px;
+                    height: 24px;
+                    line-height:24px;
+                    a {
+                        color: inherit;
+                    }
                 }
             }
             .new-words {

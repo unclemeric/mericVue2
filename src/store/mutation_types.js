@@ -10,5 +10,6 @@ export const ALL_TOTAL = 'ALL_TOTAL';
  * article api
  */
 
-export const GET_ARTICLES = 'GET_ARTICLES';
-export const GET_ARTICLE_BY_ID = 'GET_ARTICLE_BY_ID';
+export const GET_ARTICLES = 'GET_ARTICLES',
+             GET_NEWEST_ARTICLES = "GET_NEWEST_ARTICLES",
+             GET_ARTICLE_BY_ID = 'GET_ARTICLE_BY_ID';
