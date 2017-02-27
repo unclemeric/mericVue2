@@ -61,7 +61,7 @@ export default {
         //...mapState(['articles'])//如果不用mapState的想获取articles的话要写成$store.state.articles,或者写成下面这种方式
         ...mapState({
             articles: state => state.articles.articles
-        }) 
+        })
     },
     created(){
         this.getListItem({currentPage:this.currentPage,pageSize:this.pageSize});//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
@@ -75,7 +75,7 @@ export default {
         getListItem(pager) {
             this.$store.dispatch('GET_ARTICLES',pager);//获取文章列表,不传当前页数和每页显示数量则分别默认为1、10
         },
-        getNewestArticles:function(size){
+        getNewestArticles(size){
             this.$store.dispatch('GET_NEWEST_ARTICLES',size);
         },
         handleSizeChange:function () {},

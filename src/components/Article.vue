@@ -29,19 +29,19 @@ export default {
 </script>
 <style lang="sass" scoped>
 .article-title {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     line-height: 1.15;
     font-weight: 400;
 }
 .article-meta {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: #999;
 }
 
 .article-lead {
     color: #666;
-    font-size: 1.4rem;
+    font-size: 1rem;
     line-height: 1.5;
     border: 1px solid #dedede;
     border-radius: 2px;

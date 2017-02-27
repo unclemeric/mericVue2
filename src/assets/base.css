@@ -323,7 +323,7 @@ samp {
 /* Inline code */
 code {
   padding: 2px 4px;
-  font-size: 1.3rem;
+  font-size: .9rem;
   color: #c7254e;
   background-color: #f8f8f8;
   white-space: nowrap;
@@ -334,7 +334,7 @@ pre {
   display: block;
   padding: 1rem;
   margin: 1rem  0;
-  font-size: 1.3rem;
+  font-size: .9rem;
   line-height: 1.6;
   word-break: break-all;
   word-wrap: break-word;
